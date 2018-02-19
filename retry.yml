@@ -1,0 +1,9 @@
+- hosts: all
+  connection: local
+  tasks:
+      - shell: exit 1 
+        register: task_result
+        until: task_result.rc == 0
+        retries: 10
+        delay: 0.01
+        ignore_errors: yes

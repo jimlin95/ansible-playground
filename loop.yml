@@ -1,0 +1,19 @@
+- hosts: jimserver
+  become: yes
+  tasks:
+    - name: add several users
+      user:
+        name: "{{ item }}"
+        state: present
+        groups: "root"
+      with_items:
+         - testuser1
+         - testuser2
+    - name: add several users
+      user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      with_items:
+        - { name: 'testuser3', groups: 'root' }
+        - { name: 'testuser4', groups: 'root' }
