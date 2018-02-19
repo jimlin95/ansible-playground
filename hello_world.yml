@@ -9,3 +9,10 @@
     - name: print stdout
       debug:
         msg: "{{ result.stdout }}"
+    
+    - name: ls all files
+      command: ls -al
+      register: result_ls
+    - name: ls all files
+      debug:
+          msg: "{{ result_ls.stdout }}"

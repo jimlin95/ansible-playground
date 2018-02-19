@@ -1,0 +1,28 @@
+- hosts: jimserver
+  become: yes
+  tasks:
+      - name: Create user
+        user:
+            name: mario
+            shell: /bin/zsh
+ 
+      - name: Install vim
+        apt:
+            name: vim
+            state: latest
+
+      - name: write the vimrc
+        template: 
+            src: ~/.vimrc
+            dest: /home/docker/.vimrc
+      - shell: ls /home/docker/.vimrc 
+        register: result
+        ignore_errors: True
+      - debug: msg=".vimrc"
+        when: result|succeeded
+- hosts: localhost 
+  tasks:
+      - name: Create file
+        file: 
+            path: /tmp/jim_yallo 
+            state: touch
