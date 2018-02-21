@@ -1,5 +1,6 @@
 - name: say 'hello world'
   hosts: all
+  gather_facts: no
   tasks:
 
     - name: echo 'hello world'
