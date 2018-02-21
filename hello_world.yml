@@ -1,3 +1,4 @@
+---
 - name: say 'hello world'
   hosts: all
   gather_facts: no
